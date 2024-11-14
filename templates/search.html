@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Search
+{% endblock title %}
+
+{% block body %}
+
+<a class="px-12" href="/"><--</a>
+
+{% if articles %}
+<div class="flex flex-col pt-8  items-center  w-full h-screen justify-evenly">
+    {% for article in articles %}
+       <div class="card rounded-md  flex max-md:flex-col  items-center justify-between  shadow-sm  shadow-gray-700  mb-4 p-3 w-11/12  h-auto">
+       
+        
+    <div class="w-auto max-md:w-auto">
+          <a class="text-2xl max-md:text-xl font-bold" href="{{article.url}}" target="_blank">{{article.title}}</a>
+          <div class="flex py-2 items-center max-md:w-auto justify-center "> 
+            <img class="rounde-md h-44" src={{article.urlToImage}} alt=""> 
+        </div>
+          <a href="{{article.url}}">{{ article.description }}</a>
+            <p class="text-gray-600">{{article.publishedAt}}</p>
+            <h1 class="font-semibold py-2">-{{article.source.name}}</h1>
+        </div>
+       </div>
+    {% endfor %}
+</div>
+{% else %}
+  <p class="text-center text 2xl">OOPs In this <span class="text 2xl font-bold">{{ query }} </span> No articles found.</p>
+{% endif %}
+
+
+{% endblock body %}
+<!---Excited to share that I just completed a Django News web app project! It was a great learning experience, especially working with the Django authentication system for user login, logout, and signup. But the most effective part? Learning how to fetch APIs-->
